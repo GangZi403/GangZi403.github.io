@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>农村自建房平面设计图 - 15m×10m 二层别墅</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #e8e8e8;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #f39c12, #e74c3c, #9b59b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      font-weight: 300;
+    }
+
+    .specs {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px 30px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .spec-label {
+      font-size: 0.8rem;
+      color: #95a5a6;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .spec-value {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #f39c12;
+      margin-top: 5px;
+    }
+
+    .floor-section {
+      margin-bottom: 60px;
+    }
+
+    .floor-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+      padding-left: 20px;
+      border-left: 4px solid #e74c3c;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .floor-badge {
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .floor-plan-wrapper {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .floor-plan {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+      flex: 1;
+      min-width: 700px;
+    }
+
+    .plan-svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .room-info {
+      flex: 0 0 280px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .room-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      color: #f39c12;
+      font-weight: 500;
+    }
+
+    .room-list {
+      list-style: none;
+    }
+
+    .room-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.95rem;
+    }
+
+    .room-list li:last-child {
+      border-bottom: none;
+    }
+
+    .room-name {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .room-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .room-area {
+      color: #f39c12;
+      font-weight: 500;
+    }
+
+    .legend {
+      margin-top: 40px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .legend h3 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      color: #9b59b6;
+    }
+
+    .legend-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .legend-color {
+      width: 30px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .notes {
+      margin-top: 50px;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(243, 156, 18, 0.1), rgba(231, 76, 60, 0.1));
+      border-radius: 16px;
+      border: 1px solid rgba(243, 156, 18, 0.2);
+    }
+
+    .notes h3 {
+      font-size: 1.2rem;
+      color: #f39c12;
+      margin-bottom: 20px;
+    }
+
+    .notes ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 15px;
+    }
+
+    .notes li {
+      padding-left: 25px;
+      position: relative;
+      line-height: 1.6;
+      color: #bdc3c7;
+    }
+
+    .notes li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #e74c3c;
+    }
+
+    @media (max-width: 900px) {
+      .floor-plan {
+        min-width: 100%;
+      }
+
+      .room-info {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>农村自建房平面设计图</h1>
+      <p class="subtitle">现代简约风格 · 二层别墅 · 户型编号 151001</p>
+      <div class="specs">
+        <div class="spec-item">
+          <div class="spec-label">占地尺寸</div>
+          <div class="spec-value">15m × 10m</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">建筑面积</div>
+          <div class="spec-value">约300㎡</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">朝向</div>
+          <div class="spec-value">大门朝南</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">结构</div>
+          <div class="spec-value">框架结构</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 一楼平面图 -->
+    <section class="floor-section">
+      <h2 class="floor-title">
+        <span class="floor-badge">1F</span>
+        一层平面图
+      </h2>
+      <div class="floor-plan-wrapper">
+        <div class="floor-plan">
+          <svg class="plan-svg" viewBox="0 0 850 580" xmlns="http://www.w3.org/2000/svg">
+            <!-- 背景 -->
+            <rect x="0" y="0" width="850" height="580" fill="#fafafa" />
+
+            <!-- 指北针 -->
+            <g transform="translate(780, 50)">
+              <circle cx="0" cy="0" r="25" fill="none" stroke="#333" stroke-width="1" />
+              <polygon points="0,-20 -6,5 0,-5 6,5" fill="#e74c3c" />
+              <polygon points="0,20 -6,-5 0,5 6,-5" fill="#333" />
+              <text x="0" y="-30" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">N</text>
+              <text x="0" y="42" text-anchor="middle" font-size="10" fill="#666">南</text>
+            </g>
+
+            <!-- 尺寸标注 - 顶部 -->
+            <g transform="translate(100, 80)">
+              <line x1="0" y1="0" x2="700" y2="0" stroke="#666" stroke-width="1" />
+              <line x1="0" y1="-8" x2="0" y2="8" stroke="#666" stroke-width="1" />
+              <line x1="700" y1="-8" x2="700" y2="8" stroke="#666" stroke-width="1" />
+              <text x="350" y="-12" text-anchor="middle" font-size="14" fill="#333">15000mm (15m)</text>
+
+              <!-- 分段标注 -->
+              <line x1="187" y1="-5" x2="187" y2="5" stroke="#999" stroke-width="1" />
+              <text x="93" y="20" text-anchor="middle" font-size="11" fill="#666">4000</text>
+
+              <line x1="374" y1="-5" x2="374" y2="5" stroke="#999" stroke-width="1" />
+              <text x="280" y="20" text-anchor="middle" font-size="11" fill="#666">4000</text>
+
+              <line x1="514" y1="-5" x2="514" y2="5" stroke="#999" stroke-width="1" />
+              <text x="444" y="20" text-anchor="middle" font-size="11" fill="#666">3000</text>
+
+              <text x="607" y="20" text-anchor="middle" font-size="11" fill="#666">4000</text>
+            </g>
+
+            <!-- 尺寸标注 - 左侧 -->
+            <g transform="translate(80, 110)">
+              <line x1="0" y1="0" x2="0" y2="420" stroke="#666" stroke-width="1" />
+              <line x1="-8" y1="0" x2="8" y2="0" stroke="#666" stroke-width="1" />
+              <line x1="-8" y1="420" x2="8" y2="420" stroke="#666" stroke-width="1" />
+              <text x="-15" y="210" text-anchor="middle" font-size="14" fill="#333"
+                transform="rotate(-90, -15, 210)">10000mm (10m)</text>
+
+              <!-- 纵向分段 -->
+              <line x1="-5" y1="163" x2="5" y2="163" stroke="#999" stroke-width="1" />
+              <text x="-25" y="81" text-anchor="middle" font-size="10" fill="#666">3900</text>
+
+              <line x1="-5" y1="243" x2="5" y2="243" stroke="#999" stroke-width="1" />
+              <text x="-25" y="203" text-anchor="middle" font-size="10" fill="#666">1900</text>
+
+              <text x="-25" y="331" text-anchor="middle" font-size="10" fill="#666">4200</text>
+            </g>
+
+            <!-- 主体墙体 -->
+            <rect x="100" y="110" width="700" height="420" fill="none" stroke="#1a1a1a" stroke-width="8" />
+
+            <!-- ========== 左侧区域 (4000mm宽) ========== -->
+            <!-- 左上 - 房间 -->
+            <rect x="100" y="110" width="187" height="163" fill="#e8d5b7" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="115" y="130" width="80" height="100" fill="#d4b896" stroke="#8b7355" stroke-width="1.5" rx="3" />
+            <rect x="210" y="155" width="60" height="20" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+            <text x="193" y="145" text-anchor="middle" font-size="14" font-weight="600" fill="#8b7355">房间</text>
+            <text x="193" y="162" text-anchor="middle" font-size="10" fill="#666">4m×3.9m</text>
+            <text x="193" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">15.6㎡</text>
+
+            <!-- 左中 - 公卫(干湿分离) -->
+            <rect x="100" y="273" width="120" height="80" fill="#e3f2fd" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="105" y="283" width="55" height="65" fill="#b3e5fc" stroke="#0288d1" stroke-width="1.5" />
+            <text x="132" y="320" text-anchor="middle" font-size="9" fill="#0288d1">淋浴</text>
+            <rect x="160" y="283" width="55" height="35" fill="#bbdefb" stroke="#1565c0" stroke-width="1.5" />
+            <ellipse cx="187" cy="335" rx="12" ry="10" fill="#fff" stroke="#1565c0" stroke-width="1.5" />
+            <text x="160" y="300" text-anchor="middle" font-size="12" font-weight="500" fill="#1565c0">公卫</text>
+            <text x="160" y="365" text-anchor="middle" font-size="9" fill="#0288d1">干湿分离</text>
+
+            <!-- 过道 -->
+            <rect x="220" y="273" width="67" height="80" fill="#fafafa" stroke="#1a1a1a" stroke-width="4" />
+            <text x="253" y="318" text-anchor="middle" font-size="10" fill="#888">过道</text>
+
+            <!-- 左下 - 卧室 -->
+            <rect x="100" y="353" width="187" height="177" fill="#dcedc1" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="115" y="375" width="90" height="120" fill="#aed581" stroke="#558b2f" stroke-width="1.5" rx="3" />
+            <rect x="220" y="420" width="55" height="25" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+            <text x="193" y="400" text-anchor="middle" font-size="14" font-weight="600" fill="#558b2f">卧室</text>
+            <text x="193" y="417" text-anchor="middle" font-size="10" fill="#666">4m×4.2m</text>
+            <text x="193" y="433" text-anchor="middle" font-size="11" fill="#e74c3c">16.8㎡</text>
+
+            <!-- 外部楼梯（西侧） -->
+            <g transform="translate(50, 320)">
+              <rect x="0" y="0" width="45" height="150" fill="#cfd8dc" stroke="#455a64" stroke-width="3" />
+              <line x1="5" y1="15" x2="40" y2="15" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="30" x2="40" y2="30" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="45" x2="40" y2="45" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="60" x2="40" y2="60" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="75" x2="40" y2="75" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="90" x2="40" y2="90" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="105" x2="40" y2="105" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="120" x2="40" y2="120" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="135" x2="40" y2="135" stroke="#78909c" stroke-width="1.5" />
+              <text x="22" y="80" text-anchor="middle" font-size="8" fill="#455a64" transform="rotate(-90, 22, 80)">外楼梯↑</text>
+            </g>
+            <text x="72" y="490" text-anchor="middle" font-size="10" fill="#e74c3c">外部楼梯</text>
+            <text x="72" y="503" text-anchor="middle" font-size="9" fill="#666">直通二楼</text>
+
+            <!-- ========== 中间区域 - 餐厅+厨房+客厅 ========== -->
+            <!-- 餐厅 -->
+            <rect x="287" y="110" width="187" height="163" fill="#ffaaa5" stroke="#1a1a1a" stroke-width="4" />
+            <text x="380" y="145" text-anchor="middle" font-size="14" font-weight="500" fill="#c2185b">餐厅</text>
+            <text x="380" y="162" text-anchor="middle" font-size="10" fill="#666">4m×3.9m</text>
+            <text x="380" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">15.6㎡</text>
+            <!-- 餐桌 -->
+            <rect x="340" y="185" width="80" height="50" fill="#f8bbd9" stroke="#c2185b" stroke-width="1.5" rx="3" />
+            <rect x="328" y="195" width="10" height="30" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="422" y="195" width="10" height="30" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="355" y="175" width="20" height="8" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="385" y="175" width="20" height="8" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+
+            <!-- 推拉门标识（餐厅和厨房之间） -->
+            <rect x="470" y="150" width="8" height="80" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <text x="490" y="195" text-anchor="start" font-size="9" fill="#e74c3c">推拉门</text>
+
+            <!-- 开放式厨房 -->
+            <rect x="474" y="110" width="140" height="163" fill="#ffd3b6" stroke="#1a1a1a" stroke-width="4" />
+            <text x="544" y="145" text-anchor="middle" font-size="14" font-weight="500" fill="#e65100">厨房</text>
+            <text x="544" y="162" text-anchor="middle" font-size="10" fill="#666">3m×3.9m</text>
+            <text x="544" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">11.7㎡</text>
+            <!-- 橱柜 -->
+            <rect x="485" y="120" width="120" height="25" fill="#ffcc80" stroke="#e65100" stroke-width="1.5" />
+            <circle cx="510" cy="132" r="6" fill="#fff" stroke="#e65100" stroke-width="1" />
+            <circle cx="535" cy="132" r="6" fill="#fff" stroke="#e65100" stroke-width="1" />
+            <!-- 洗菜池 -->
+            <rect x="500" y="200" width="50" height="35" fill="#ffcc80" stroke="#e65100" stroke-width="1.5" rx="3" />
+            <rect x="510" y="208" width="30" height="20" fill="#fff" stroke="#e65100" stroke-width="1" rx="2" />
+
+            <!-- 大客厅（打通） -->
+            <rect x="287" y="273" width="327" height="257" fill="#a8e6cf" stroke="#1a1a1a" stroke-width="4" />
+            <text x="450" y="380" text-anchor="middle" font-size="22" font-weight="600" fill="#2e7d32">客厅</text>
+            <text x="450" y="410" text-anchor="middle" font-size="13" fill="#666">7m×6.1m</text>
+            <text x="450" y="430" text-anchor="middle" font-size="14" fill="#e74c3c" font-weight="500">42.7㎡</text>
+            <!-- 电视墙（西边） -->
+            <rect x="291" y="350" width="8" height="130" fill="#2e7d32" rx="2" />
+            <text x="310" y="420" text-anchor="start" font-size="10" fill="#2e7d32">电视墙</text>
+            <!-- 茶几 -->
+            <rect x="340" y="385" width="25" height="100" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5" rx="3" />
+            <!-- 沙发组合（东边） -->
+            <rect x="555" y="340" width="50" height="150" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+            <rect x="540" y="325" width="80" height="25" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+            <rect x="540" y="490" width="80" height="25" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+
+            <!-- ========== 右侧区域 (4000mm宽) ========== -->
+            <!-- 右上 - 卧室 -->
+            <rect x="614" y="110" width="186" height="163" fill="#dcedc1" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="695" y="130" width="90" height="100" fill="#aed581" stroke="#558b2f" stroke-width="1.5" rx="3" />
+            <rect x="625" y="155" width="60" height="20" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+            <text x="707" y="145" text-anchor="middle" font-size="14" font-weight="600" fill="#558b2f">卧室</text>
+            <text x="707" y="162" text-anchor="middle" font-size="10" fill="#666">4m×3.9m</text>
+            <text x="707" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">15.6㎡</text>
+
+            <!-- 过道 -->
+            <rect x="614" y="273" width="67" height="80" fill="#fafafa" stroke="#1a1a1a" stroke-width="4" />
+            <text x="647" y="318" text-anchor="middle" font-size="10" fill="#888">过道</text>
+
+            <!-- 右中 - 公卫 -->
+            <rect x="681" y="273" width="119" height="80" fill="#e3f2fd" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="745" y="283" width="50" height="65" fill="#bbdefb" stroke="#1565c0" stroke-width="1.5" />
+            <text x="770" y="320" text-anchor="middle" font-size="9" fill="#1565c0">淋浴</text>
+            <ellipse cx="712" cy="335" rx="12" ry="10" fill="#fff" stroke="#1565c0" stroke-width="1.5" />
+            <text x="720" y="300" text-anchor="middle" font-size="12" font-weight="500" fill="#1565c0">公卫</text>
+
+            <!-- 右下 - 卧室 -->
+            <rect x="614" y="353" width="186" height="177" fill="#dcedc1" stroke="#1a1a1a" stroke-width="4" />
+            <rect x="695" y="375" width="90" height="120" fill="#aed581" stroke="#558b2f" stroke-width="1.5" rx="3" />
+            <rect x="625" y="420" width="55" height="25" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+            <text x="707" y="400" text-anchor="middle" font-size="14" font-weight="600" fill="#558b2f">卧室</text>
+            <text x="707" y="417" text-anchor="middle" font-size="10" fill="#666">4m×4.2m</text>
+            <text x="707" y="433" text-anchor="middle" font-size="11" fill="#e74c3c">16.8㎡</text>
+
+            <!-- ========== 门 ========== -->
+            <!-- 大门（南侧中央）-->
+            <rect x="410" y="526" width="80" height="8" fill="#fff" stroke="#1a1a1a" stroke-width="2" />
+            <text x="450" y="560" text-anchor="middle" font-size="11" font-weight="bold" fill="#e74c3c">↓ 入户门（大门朝南）</text>
+
+            <!-- 房间门（下方）-->
+            <rect x="230" y="269" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+            <!-- 餐厅门（下方）-->
+            <rect x="340" y="269" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+            <!-- 厨房门（下方）-->
+            <rect x="510" y="269" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+            <!-- 卧室门（右上-下方）-->
+            <rect x="630" y="269" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+            
+            <!-- 公卫门（左-右侧）-->
+            <rect x="216" y="300" width="8" height="35" fill="#fff" stroke="#333" stroke-width="1.5" />
+            <!-- 公卫门（右-左侧）-->
+            <rect x="677" y="300" width="8" height="35" fill="#fff" stroke="#333" stroke-width="1.5" />
+            
+            <!-- 卧室门（左下-上方）-->
+            <rect x="230" y="349" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+            <!-- 卧室门（右下-上方）-->
+            <rect x="630" y="349" width="40" height="8" fill="#fff" stroke="#333" stroke-width="1.5" />
+
+            <!-- ========== 窗户 ========== -->
+            <!-- 北侧窗户 -->
+            <rect x="140" y="106" width="60" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="330" y="106" width="70" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="510" y="106" width="50" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="660" y="106" width="70" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+
+            <!-- 南侧窗户 -->
+            <rect x="140" y="526" width="70" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="300" y="526" width="50" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="540" y="526" width="50" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="660" y="526" width="70" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+
+            <!-- 东侧窗户 -->
+            <rect x="796" y="150" width="8" height="60" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="796" y="400" width="8" height="70" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+
+            <!-- 西侧窗户 -->
+            <rect x="96" y="150" width="8" height="60" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="96" y="400" width="8" height="70" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+          </svg>
+        </div>
+
+        <div class="room-info">
+          <h3>一层房间面积</h3>
+          <ul class="room-list">
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #2e7d32"></span>
+                客厅（打通）
+              </span>
+              <span class="room-area">42.7㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #c2185b"></span>
+                餐厅
+              </span>
+              <span class="room-area">15.6㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #e65100"></span>
+                开放式厨房
+              </span>
+              <span class="room-area">11.7㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #8b7355"></span>
+                房间（左上）
+              </span>
+              <span class="room-area">15.6㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #558b2f"></span>
+                卧室（左下）
+              </span>
+              <span class="room-area">16.8㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #558b2f"></span>
+                卧室（右上）
+              </span>
+              <span class="room-area">15.6㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #558b2f"></span>
+                卧室（右下）
+              </span>
+              <span class="room-area">16.8㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #1565c0"></span>
+                公卫×2（干湿分离）
+              </span>
+              <span class="room-area">~7.6㎡</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top: 25px; color: #e74c3c;">设计亮点</h3>
+          <ul class="room-list">
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #2e7d32; font-weight: 500;">超大客厅 42.7㎡</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">客厅打通，空间通透宽敞</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #e65100; font-weight: 500;">开放式厨房+推拉门</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">与餐厅连通，现代生活方式</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #455a64; font-weight: 500;">西侧外部楼梯</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">室外直通二楼，室内无楼梯</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #0288d1; font-weight: 500;">干湿分离卫生间</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">淋浴区独立，使用更方便</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 二楼平面图 -->
+    <section class="floor-section">
+      <h2 class="floor-title">
+        <span class="floor-badge" style="background: linear-gradient(135deg, #9b59b6, #8e44ad)">2F</span>
+        二层平面图（公卫在左侧过道区）
+      </h2>
+      <div class="floor-plan-wrapper">
+        <div class="floor-plan">
+          <svg class="plan-svg" viewBox="0 0 850 580" xmlns="http://www.w3.org/2000/svg">
+            <!-- 背景 -->
+            <rect x="0" y="0" width="850" height="580" fill="#fafafa" />
+
+            <!-- 指北针 -->
+            <g transform="translate(780, 50)">
+              <circle cx="0" cy="0" r="25" fill="none" stroke="#333" stroke-width="1" />
+              <polygon points="0,-20 -6,5 0,-5 6,5" fill="#e74c3c" />
+              <polygon points="0,20 -6,-5 0,5 6,-5" fill="#333" />
+              <text x="0" y="-30" text-anchor="middle" font-size="12" font-weight="bold" fill="#e74c3c">N</text>
+              <text x="0" y="42" text-anchor="middle" font-size="10" fill="#666">南</text>
+            </g>
+
+            <!-- 尺寸标注 - 顶部 -->
+            <g transform="translate(100, 80)">
+              <line x1="0" y1="0" x2="700" y2="0" stroke="#666" stroke-width="1" />
+              <line x1="0" y1="-8" x2="0" y2="8" stroke="#666" stroke-width="1" />
+              <line x1="700" y1="-8" x2="700" y2="8" stroke="#666" stroke-width="1" />
+              <text x="350" y="-12" text-anchor="middle" font-size="14" fill="#333">15000mm (15m)</text>
+
+              <!-- 三等分标注 -->
+              <line x1="233" y1="-5" x2="233" y2="5" stroke="#999" stroke-width="1" />
+              <text x="116" y="20" text-anchor="middle" font-size="11" fill="#666">5000</text>
+
+              <line x1="466" y1="-5" x2="466" y2="5" stroke="#999" stroke-width="1" />
+              <text x="350" y="20" text-anchor="middle" font-size="11" fill="#666">5000</text>
+
+              <text x="583" y="20" text-anchor="middle" font-size="11" fill="#666">5000</text>
+            </g>
+
+            <!-- 尺寸标注 - 左侧 -->
+            <g transform="translate(80, 110)">
+              <line x1="0" y1="0" x2="0" y2="420" stroke="#666" stroke-width="1" />
+              <line x1="-8" y1="0" x2="8" y2="0" stroke="#666" stroke-width="1" />
+              <line x1="-8" y1="420" x2="8" y2="420" stroke="#666" stroke-width="1" />
+              <text x="-15" y="210" text-anchor="middle" font-size="14" fill="#333"
+                transform="rotate(-90, -15, 210)">10000mm (10m)</text>
+            </g>
+
+            <!-- 外部楼梯入口（左前方/西南角） -->
+            <g transform="translate(50, 440)">
+              <rect x="0" y="0" width="45" height="110" fill="#cfd8dc" stroke="#455a64" stroke-width="3" />
+              <line x1="5" y1="12" x2="40" y2="12" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="24" x2="40" y2="24" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="36" x2="40" y2="36" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="48" x2="40" y2="48" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="60" x2="40" y2="60" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="72" x2="40" y2="72" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="84" x2="40" y2="84" stroke="#78909c" stroke-width="1.5" />
+              <line x1="5" y1="96" x2="40" y2="96" stroke="#78909c" stroke-width="1.5" />
+              <text x="22" y="60" text-anchor="middle" font-size="8" fill="#455a64"
+                transform="rotate(-90, 22, 60)">外楼梯</text>
+            </g>
+            <!-- 外楼梯入口门 -->
+            <rect x="96" y="460" width="8" height="50" fill="#fff" stroke="#333" stroke-width="2" />
+            <text x="72" y="565" text-anchor="middle" font-size="10" fill="#e74c3c">外楼梯入口</text>
+
+            <!-- 主体墙体 -->
+            <rect x="100" y="110" width="700" height="420" fill="none" stroke="#1a1a1a" stroke-width="8" />
+
+            <!-- ========== 左上 - 卧室3 ========== -->
+            <rect x="100" y="110" width="233" height="130" fill="#e8f5e9" stroke="#1a1a1a" stroke-width="4" />
+            <text x="216" y="160" text-anchor="middle" font-size="18" font-weight="600" fill="#2e7d32">卧室3</text>
+            <text x="216" y="180" text-anchor="middle" font-size="11" fill="#666">5m×3.1m</text>
+            <text x="216" y="197" text-anchor="middle" font-size="11" fill="#e74c3c">15.5㎡</text>
+            <!-- 床 -->
+            <rect x="115" y="125" width="110" height="80" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5" rx="3" />
+            <rect x="120" y="130" width="100" height="25" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1" rx="2" />
+            <text x="170" y="175" text-anchor="middle" font-size="9" fill="#2e7d32">1.5m床</text>
+            <!-- 衣柜 -->
+            <rect x="240" y="125" width="80" height="25" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+
+            <!-- 卧室3门（开向小过道，底边） -->
+            <rect x="255" y="236" width="45" height="8" fill="#fff" stroke="#333" stroke-width="2" />
+            <path d="M 255 240 L 255 275" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+            <path d="M 255 275 A 35 35 0 0 0 300 240" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,2" />
+            <text x="277" y="225" text-anchor="middle" font-size="9" fill="#333">门</text>
+
+            <!-- 左侧公卫（干湿分离，原过道区域） -->
+            <rect x="100" y="240" width="140" height="60" fill="#b3e5fc" stroke="#1a1a1a" stroke-width="4" />
+            <text x="170" y="258" text-anchor="middle" font-size="10" font-weight="600" fill="#0277bd">公卫</text>
+            <text x="170" y="270" text-anchor="middle" font-size="8" fill="#0288d1">干湿分离</text>
+            <!-- 干区 -->
+            <rect x="105" y="248" width="40" height="45" fill="#e1f5fe" stroke="#0288d1" stroke-width="1.5" />
+            <ellipse cx="125" cy="268" rx="9" ry="7" fill="#fff" stroke="#0288d1" stroke-width="1" />
+            <!-- 湿区 -->
+            <rect x="150" y="248" width="40" height="45" fill="#81d4fa" stroke="#0288d1" stroke-width="1.5" />
+            <rect x="155" y="253" width="28" height="35" fill="#4fc3f7" stroke="#0288d1" stroke-width="1" rx="2" />
+            <text x="169" y="275" text-anchor="middle" font-size="7" fill="#0277bd">淋浴</text>
+            <!-- 洗手台 -->
+            <rect x="195" y="250" width="40" height="20" fill="#e1f5fe" stroke="#0288d1" stroke-width="1" rx="2" />
+            <text x="215" y="263" text-anchor="middle" font-size="6" fill="#0288d1">洗手台</text>
+            <!-- 公卫门（开向小过道） -->
+            <rect x="232" y="265" width="8" height="28" fill="#fff" stroke="#333" stroke-width="1.5" />
+
+            <!-- 小过道（连接左侧与中间区域） -->
+            <rect x="240" y="240" width="93" height="60" fill="#fafafa" stroke="#1a1a1a" stroke-width="4" />
+            <text x="286" y="275" text-anchor="middle" font-size="10" fill="#888">过道</text>
+
+            <!-- ========== 左下 - 卧室2 ========== -->
+            <rect x="100" y="300" width="233" height="150" fill="#fff3e0" stroke="#1a1a1a" stroke-width="4" />
+            <text x="216" y="365" text-anchor="middle" font-size="18" font-weight="600" fill="#ef6c00">卧室2</text>
+            <text x="216" y="385" text-anchor="middle" font-size="11" fill="#666">5m×3.6m</text>
+            <text x="216" y="402" text-anchor="middle" font-size="11" fill="#e74c3c">18㎡</text>
+            <!-- 床 -->
+            <rect x="115" y="320" width="110" height="90" fill="#ffcc80" stroke="#ef6c00" stroke-width="2" rx="5" />
+            <rect x="120" y="325" width="100" height="25" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" rx="3" />
+            <text x="170" y="375" text-anchor="middle" font-size="9" fill="#ef6c00">1.5m床</text>
+            <!-- 衣柜 -->
+            <rect x="240" y="320" width="80" height="25" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+
+            <!-- 卧室2落地窗标注 -->
+            <text x="216" y="440" text-anchor="middle" font-size="10" fill="#e74c3c">落地窗</text>
+
+            <!-- 卧室2门（开向客厅，右边） -->
+            <rect x="329" y="360" width="8" height="45" fill="#fff" stroke="#333" stroke-width="2" />
+            <path d="M 333 360 L 373 360" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+            <path d="M 373 360 A 40 40 0 0 0 333 405" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,2" />
+            <text x="350" y="385" text-anchor="middle" font-size="9" fill="#333">门</text>
+
+            <!-- ========== 中间区域 - 餐厅+厨房+客厅（缩小后的布局） ========== -->
+            <!-- 餐厅（缩小） -->
+            <rect x="333" y="110" width="110" height="163" fill="#ffaaa5" stroke="#1a1a1a" stroke-width="4" />
+            <text x="388" y="145" text-anchor="middle" font-size="14" font-weight="500" fill="#c2185b">餐厅</text>
+            <text x="388" y="162" text-anchor="middle" font-size="10" fill="#666">2.4m×3.9m</text>
+            <text x="388" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">9.4㎡</text>
+            <!-- 餐桌 -->
+            <rect x="350" y="185" width="70" height="45" fill="#f8bbd9" stroke="#c2185b" stroke-width="1.5" rx="3" />
+            <rect x="340" y="195" width="8" height="25" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="422" y="195" width="8" height="25" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="360" y="177" width="18" height="6" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+            <rect x="392" y="177" width="18" height="6" fill="#f48fb1" stroke="#c2185b" stroke-width="1" rx="2" />
+
+            <!-- 推拉门标识（餐厅和厨房之间） -->
+            <rect x="439" y="150" width="8" height="80" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <text x="458" y="195" text-anchor="start" font-size="9" fill="#e74c3c">推拉门</text>
+
+            <!-- 厨房（缩小） -->
+            <rect x="443" y="110" width="80" height="163" fill="#ffd3b6" stroke="#1a1a1a" stroke-width="4" />
+            <text x="483" y="145" text-anchor="middle" font-size="14" font-weight="500" fill="#e65100">厨房</text>
+            <text x="483" y="162" text-anchor="middle" font-size="10" fill="#666">1.7m×3.9m</text>
+            <text x="483" y="178" text-anchor="middle" font-size="11" fill="#e74c3c">6.6㎡</text>
+            <!-- 橱柜 -->
+            <rect x="450" y="120" width="65" height="25" fill="#ffcc80" stroke="#e65100" stroke-width="1.5" />
+            <circle cx="470" cy="132" r="5" fill="#fff" stroke="#e65100" stroke-width="1" />
+            <circle cx="490" cy="132" r="5" fill="#fff" stroke="#e65100" stroke-width="1" />
+            <!-- 洗菜池 -->
+            <rect x="455" y="200" width="45" height="30" fill="#ffcc80" stroke="#e65100" stroke-width="1.5" rx="3" />
+            <rect x="462" y="206" width="28" height="18" fill="#fff" stroke="#e65100" stroke-width="1" rx="2" />
+
+            <!-- 客厅（扩大，吸收原公卫区域） -->
+            <rect x="333" y="240" width="233" height="210" fill="#a8e6cf" stroke="#1a1a1a" stroke-width="4" />
+            <text x="449" y="330" text-anchor="middle" font-size="18" font-weight="600" fill="#2e7d32">客厅</text>
+            <text x="449" y="355" text-anchor="middle" font-size="11" fill="#666">5m×5m</text>
+            <text x="449" y="375" text-anchor="middle" font-size="14" fill="#e74c3c" font-weight="500">25㎡</text>
+            <!-- 电视墙（西边） -->
+            <rect x="337" y="290" width="8" height="100" fill="#2e7d32" rx="2" />
+            <text x="355" y="345" text-anchor="start" font-size="9" fill="#2e7d32">电视墙</text>
+            <!-- 茶几 -->
+            <rect x="380" y="310" width="20" height="70" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5" rx="3" />
+            <!-- 沙发组合（东边） -->
+            <rect x="510" y="290" width="45" height="100" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+            <rect x="500" y="275" width="65" height="20" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+            <rect x="500" y="395" width="65" height="20" fill="#81c784" stroke="#2e7d32" stroke-width="1.5" rx="5" />
+
+            <!-- 客厅门（通往露台） -->
+            <rect x="400" y="446" width="50" height="8" fill="#fff" stroke="#333" stroke-width="2" />
+            <path d="M 400 450 L 400 485" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+            <path d="M 400 485 A 35 35 0 0 0 450 450" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,2" />
+            <text x="425" y="470" text-anchor="middle" font-size="9" fill="#333">门</text>
+
+            <!-- ========== 右侧 - 主卧 (5m宽) ========== -->
+            <rect x="566" y="110" width="234" height="340" fill="#e3f2fd" stroke="#1a1a1a" stroke-width="4" />
+            <text x="683" y="230" text-anchor="middle" font-size="20" font-weight="600" fill="#1565c0">主卧</text>
+            <text x="683" y="255" text-anchor="middle" font-size="11" fill="#666">5m×8m</text>
+            <text x="683" y="275" text-anchor="middle" font-size="12" fill="#e74c3c" font-weight="500">40㎡</text>
+            <!-- 床 -->
+            <rect x="600" y="130" width="160" height="130" fill="#90caf9" stroke="#1565c0" stroke-width="2" rx="5" />
+            <rect x="605" y="135" width="150" height="45" fill="#bbdefb" stroke="#1565c0" stroke-width="1" rx="3" />
+            <text x="680" y="210" text-anchor="middle" font-size="11" fill="#1565c0">1.8m大床</text>
+            <!-- 衣柜 -->
+            <rect x="600" y="310" width="180" height="35" fill="#d7ccc8" stroke="#5d4037" stroke-width="1.5" />
+            <text x="690" y="332" text-anchor="middle" font-size="10" fill="#5d4037">衣柜</text>
+            <!-- 梳妆台 -->
+            <rect x="600" y="370" width="80" height="40" fill="#e1bee7" stroke="#7b1fa2" stroke-width="1.5" rx="3" />
+            <text x="640" y="395" text-anchor="middle" font-size="9" fill="#7b1fa2">梳妆台</text>
+            <!-- 休息沙发 -->
+            <rect x="700" y="370" width="80" height="40" fill="#b39ddb" stroke="#512da8" stroke-width="1.5" rx="3" />
+            <text x="740" y="395" text-anchor="middle" font-size="9" fill="#512da8">休息区</text>
+
+            <!-- ========== 底部 - 露台+楼梯入口 (左中两区) ========== -->
+            <rect x="100" y="450" width="466" height="80" fill="#fff9c4" stroke="#1a1a1a" stroke-width="4" />
+            <text x="333" y="495" text-anchor="middle" font-size="16" font-weight="600" fill="#f9a825">露台</text>
+            <!-- 楼梯入口 -->
+            <rect x="105" y="455" width="60" height="70" fill="#cfd8dc" stroke="#455a64" stroke-width="2" />
+            <line x1="110" y1="465" x2="160" y2="465" stroke="#78909c" stroke-width="1.5" />
+            <line x1="110" y1="475" x2="160" y2="475" stroke="#78909c" stroke-width="1.5" />
+            <line x1="110" y1="485" x2="160" y2="485" stroke="#78909c" stroke-width="1.5" />
+            <line x1="110" y1="495" x2="160" y2="495" stroke="#78909c" stroke-width="1.5" />
+            <line x1="110" y1="505" x2="160" y2="505" stroke="#78909c" stroke-width="1.5" />
+            <line x1="110" y1="515" x2="160" y2="515" stroke="#78909c" stroke-width="1.5" />
+            <text x="135" y="540" text-anchor="middle" font-size="10" fill="#e74c3c">楼梯</text>
+
+            <!-- 主卧门（开向客厅，左边） -->
+            <rect x="562" y="320" width="8" height="50" fill="#fff" stroke="#333" stroke-width="2" />
+            <path d="M 566 320 L 526 320" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+            <path d="M 526 320 A 40 40 0 0 0 566 370" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="3,2" />
+            <text x="545" y="345" text-anchor="middle" font-size="9" fill="#333">门</text>
+
+            <!-- 露台门 -->
+            <rect x="560" y="444" width="8" height="40" fill="#fff" stroke="#333" stroke-width="2" />
+            <text x="545" y="470" text-anchor="end" font-size="10" fill="#333">门</text>
+
+            <!-- ========== 底部右侧 - 阳台 (5m宽) ========== -->
+            <rect x="566" y="450" width="234" height="80" fill="#e8f5e9" stroke="#1a1a1a" stroke-width="4" />
+            <text x="683" y="495" text-anchor="middle" font-size="14" font-weight="600" fill="#2e7d32">阳台</text>
+            <!-- 推拉门 -->
+            <rect x="590" y="444" width="80" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <text x="630" y="438" text-anchor="middle" font-size="9" fill="#e74c3c">推拉门</text>
+            <!-- 落地窗标注 -->
+            <text x="750" y="538" text-anchor="middle" font-size="10" fill="#e74c3c">落地窗</text>
+            <!-- 栏杆 -->
+            <line x1="576" y1="525" x2="790" y2="525" stroke="#4caf50" stroke-width="3" />
+
+            <!-- ========== 窗户 ========== -->
+            <!-- 北侧窗户 -->
+            <rect x="140" y="106" width="100" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="355" y="106" width="70" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="460" y="106" width="50" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="620" y="106" width="120" height="8" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+
+            <!-- 东侧窗户 -->
+            <rect x="796" y="180" width="8" height="80" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+            <rect x="796" y="300" width="8" height="80" fill="#81d4fa" stroke="#0277bd" stroke-width="1.5" />
+
+            <!-- 西侧窗户（落地窗） -->
+            <rect x="96" y="300" width="8" height="130" fill="#81d4fa" stroke="#0277bd" stroke-width="2" />
+          </svg>
+        </div>
+
+        <div class="room-info">
+          <h3>二层房间面积</h3>
+          <ul class="room-list">
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #2e7d32"></span>
+                左上 - 卧室3
+              </span>
+              <span class="room-area">~15.5㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #0288d1"></span>
+                左中 - 公卫
+              </span>
+              <span class="room-area">~3.5㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #ef6c00"></span>
+                左下 - 卧室2
+              </span>
+              <span class="room-area">~18㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #c2185b"></span>
+                中上 - 餐厅
+              </span>
+              <span class="room-area">~9.4㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #e65100"></span>
+                中上 - 厨房
+              </span>
+              <span class="room-area">~6.6㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #2e7d32"></span>
+                中间 - 客厅
+              </span>
+              <span class="room-area">~25㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #1565c0"></span>
+                右侧 - 主卧
+              </span>
+              <span class="room-area">~40㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #f9a825"></span>
+                露台+楼梯
+              </span>
+              <span class="room-area">~30㎡</span>
+            </li>
+            <li>
+              <span class="room-name">
+                <span class="room-dot" style="background: #2e7d32"></span>
+                阳台
+              </span>
+              <span class="room-area">~26㎡</span>
+            </li>
+          </ul>
+
+          <h3 style="margin-top: 25px; color: #9b59b6;">二楼布局特点</h3>
+          <ul class="room-list">
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #512da8; font-weight: 500;">三卧室布局</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">卧室2、卧室3、主卧，空间宽敞</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #0288d1; font-weight: 500;">公卫位于左侧过道</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">干湿分离设计，方便卧室2、3使用</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #2e7d32; font-weight: 500;">扩大客厅 25㎡</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">餐厅厨房缩小后客厅面积增加</span>
+            </li>
+            <li style="flex-direction: column; align-items: flex-start;">
+              <span style="color: #1565c0; font-weight: 500;">主卧套房</span>
+              <span style="font-size: 0.85rem; color: #888; margin-top: 5px;">配衣柜+梳妆台+休息区</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 图例 -->
+    <div class="legend">
+      <h3>图例说明</h3>
+      <div class="legend-items">
+        <div class="legend-item">
+          <div class="legend-color" style="background: #a8e6cf"></div>
+          <span>客厅</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #dcedc1"></div>
+          <span>卧室</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #e8d5b7"></div>
+          <span>房间</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #ffd3b6"></div>
+          <span>厨房</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #ffaaa5"></div>
+          <span>餐厅</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #e3f2fd"></div>
+          <span>卫生间</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #81d4fa"></div>
+          <span>窗户/推拉门</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #cfd8dc"></div>
+          <span>外部楼梯</span>
+        </div>
+        <div class="legend-item">
+          <div class="legend-color" style="background: #fff; border: 2px solid #333"></div>
+          <span>门</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 设计说明 -->
+    <div class="notes">
+      <h3>设计说明</h3>
+      <ul>
+        <li><strong>一楼布局</strong>：左4m + 中4m + 中3m + 右4m 的经典分区</li>
+        <li><strong>超大客厅</strong>：客厅打通设计，7m×6.1m = 42.7㎡，空间通透宽敞</li>
+        <li><strong>开放式厨房</strong>：与餐厅之间设推拉门，可开放可封闭</li>
+        <li><strong>西侧外部楼梯</strong>：室外直通二楼，室内无楼梯占用空间</li>
+        <li><strong>干湿分离卫生间</strong>：淋浴区独立，使用更方便卫生</li>
+        <li><strong>四室布局</strong>：一楼四个房间，满足多代同堂需求</li>
+        <li><strong>南北通透</strong>：每个房间均有窗户，保证良好的通风采光</li>
+        <li><strong>大门朝南</strong>：坐北朝南，采光充足</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>
